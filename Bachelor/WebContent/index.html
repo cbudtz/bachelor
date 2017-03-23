@@ -3,35 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Agenda</title>
+<script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
 	<div>
 		<div class="container">
-			<table class="table">
+					<table class="table">
 				<tr>
 					<th>02312</th>
 					<th>Kursus oversigt</th>
-					<th>Agenda</th>
+					<th><a href="index.html">Agenda</a></th>
+					<th><a href="questions.html">Spørgsmål</a></th>
+					<th><a href="administration.html">Administration</a></th>
 				</tr>
 			</table>
 		</div>
 		<hr>
-		
+
 		<div class="container">
 			<ul>
-				<li>
-					Abonnér på kalender
-				</li>
-				<li>
-					Tilmeld påmindelser
-				</li>
-				<li>
-					Stil spørgsmål
-				</li>
-				
-			
+				<li>Abonnér på kalender</li>
+				<li>Tilmeld påmindelser</li>
+				<li>Stil spørgsmål</li>
+
+
 			</ul>
 			<hr>
 			<table class="table table-bordered table-hover">
@@ -50,16 +47,20 @@
 					<tr>
 						<td>Lektion 1</td>
 						<td>1/9</td>
-						<td>JSS kap 1</td>
-						<td>1/9</td>
-						<td>1/9</td>
-						<td>1/9</td>
-						<td>1/9</td>
+						<td>JSS kap 1 <img src="img/glyphicons-153-check.png"></td>
+						<td><a href="#">link</a><img
+							src="img/glyphicons-153-check.png"></td>
+						<td><a href="#" onclick="$('#quizModal').modal('show')">Quiz</a><img
+							src="img/glyphicons-153-check.png"></td>
+						<td><a
+							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><img
+							src="img/glyphicons-153-check.png"></td>
+						<td><img src="img/glyphicons-195-question-sign.png"></td>
 					</tr>
 					<tr>
 						<td>Lektion 1</td>
 						<td>1/9</td>
-						<td>1/9</td>
+						<td>1/9 <img src="img/glyphicons-154-unchecked.png"></td>
 						<td>1/9</td>
 						<td>1/9</td>
 						<td>1/9</td>
@@ -68,6 +69,34 @@
 				</tbody>
 			</table>
 		</div>
+		<!-- QuizModal -->
+		<div id="quizModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Quiz</h4>
+					</div>
+					<div class="modal-body">
+					<h2>Hvad står HTML for</h2>
+					<form>
+   							 <div class="radio"><label><input type="radio" name="quiz" id="1" value="1"> Home Tool Markup Language</label></div>
+   							 <div class="radio"><label><input type="radio" name="quiz" id="2" value="2"> Hyperlinks and Text Markup Language</label></div>
+   							 <div class="radio"><label><input type="radio" name="quiz" id="3" value="3"> Hyper Text Markup Language</label></div>
+    							<br>
+    						<input type="submit" class="w3-btn w3-orange w3-large w3-text-white" value=" Next ">
+   				 </form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
 
 	</div>
 </body>
