@@ -5,6 +5,7 @@
 <title>Agenda</title>
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/Sortable.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
@@ -58,7 +59,7 @@
 						<th>Stil spørgsmål
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="agendatable">
 					<tr>
 						<td contenteditable="true"><i class="glyphicon glyphicon-pencil"></i>Lektion 1</td>
 						<td contenteditable="true"><i class="glyphicon glyphicon-calendar"></i>1/9</td>
@@ -70,7 +71,7 @@
 							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><img
 							src="img/glyphicons-153-check.png"></td>
 						<td contenteditable="true"><img src="img/glyphicons-195-question-sign.png"></td>
-						<td contenteditable="true"><i class="glyphicon glyphicon-move"></i></td>
+						<td contenteditable="true"><i class="glyphicon glyphicon-move mover"></i></td>
 					</tr>
 					<tr>
 						<td>Lektion 2</td>
@@ -83,7 +84,7 @@
 							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><img
 							src="img/glyphicons-154-unchecked.png"></td>
 						<td><img src="img/glyphicons-195-question-sign.png"></td>
-						<td><i class="glyphicon glyphicon-move"></i></td>
+						<td><i class="glyphicon glyphicon-move mover"></i></td>
 					</tr>
 					<tr>
 						<td>CDIO 1</td>
@@ -93,7 +94,7 @@
 						<td></td>
 						<td></td>
 						<td><img src="img/glyphicons-195-question-sign.png"></td>
-						<td><i class="glyphicon glyphicon-move"></i></td>
+						<td><i class="glyphicon glyphicon-move mover"></i></td>
 					</tr>
 					<tr>
 					<td colspan="6">
@@ -147,5 +148,12 @@
 
 
 	</div>
+	
+	<script>
+	Sortable.create(document.getElementById('agendatable'), {
+		animation : 150,
+		handle : '.mover'
+	})
+	</script>
 </body>
 </html>
