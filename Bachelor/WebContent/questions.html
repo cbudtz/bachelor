@@ -9,16 +9,33 @@
 </head>
 <body>
 	<div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand navbar-link" href="#">02324▼ </a>
+					<button class="navbar-toggle collapsed" data-toggle="collapse"
+						data-target="#navcol-1">
+						<span class="sr-only">Toggle navigation</span><span
+							class="icon-bar"></span><span class="icon-bar"></span><span
+							class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="navcol-1">
+					<p class="navbar-text">Videregående programmering</p>
+					<ul class="nav navbar-nav">
+						<li class="active" role="presentation"><a href="index.html">Agenda
+						</a></li>
+						<li role="presentation"><a href="questions.html">Forum </a></li>
+						<li role="presentation"><a href="#">Pensum </a></li>
+						<li role="presentation"><a href="#">Kursus oversigt</a></li>
+						<li role="presentation"><a href="administration.html">Administration
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 		<div class="container">
-			<table class="table">
-				<tr>
-					<th>02312</th>
-					<th>Kursus oversigt</th>
-					<th><a href="index.html">Agenda</a></th>
-					<th><a href="questions.html">Spørgsmål</a></th>
-					<th><a href="administration.html">Administration</a></th>
-				</tr>
-			</table>
+
 			<ul class="nav nav-tabs">
 				<li class="nav-item"><a class="nav-link active" href="#">Alle</a>
 				</li>
@@ -31,81 +48,59 @@
 			</ul>
 
 
-			<div id="accordion" role="tablist" aria-multiselectable="true">
-				<div class="card">
-					<div class="card-header" role="tab" id="headingOne">
-						<h5 class="mb-0">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapseOne" aria-expanded="true"
-								aria-controls="collapseOne"> Hvorfor virker min switch ikke?</a>
-						</h5>
+			<div class="panel-group" role="tablist" aria-multiselectable="true"
+				id="accordion-1">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab">
+						<h4 class="panel-title">
+							<a role="button" data-toggle="collapse"
+								data-parent="#accordion-1" aria-expanded="true"
+								href="#accordion-1 .item-1">Hvorfor virker min Switch ikke?</a>
+						</h4>
 					</div>
-
-					<div id="collapseOne" class="collapse show" role="tabpanel"
-						aria-labelledby="headingOne">
-						<div class="card-block">
-							<pre><code>
-switch(test)
-	case "ko":
-		System.out.println("test");
-	case "gris":
-		System.out.println("testtest");
-							</code>
-							</pre>
-							
-							<h4>Instruktørernes svar:	</h4>
-							<p>Du mangler et <code>break;</code>
-							
-							</p>
-							
+					<div class="panel-collapse collapse in item-1" role="tabpanel">
+						<div class="panel-body">
+							<p>Hvad er der galt?</p>
+							<div class="well">
+								<p>switch(test) case "ko": System.out.println("test"); case
+									"gris": System.out.println("testtest");</p>
+							</div>
+							<div class="well">
+								<h4>Instruktørernes svar</h4>
+								<span>Du mangler et break!</span>
+							</div>
+							<div class="well">
+								<h4>De studerendes svar</h4>
+								<span>Du mangler et break!</span>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="card">
-					<div class="card-header" role="tab" id="headingTwo">
-						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse"
-								data-parent="#accordion" href="#collapseTwo"
-								aria-expanded="false" aria-controls="collapseTwo">
-								Er dette her rigtigt? </a>
-						</h5>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab">
+						<h4 class="panel-title">
+							<a role="button" data-toggle="collapse"
+								data-parent="#accordion-1" aria-expanded="false"
+								href="#accordion-1 .item-2">Accordion Item</a>
+						</h4>
 					</div>
-					<div id="collapseTwo" class="collapse" role="tabpanel"
-						aria-labelledby="headingTwo">
-						<div class="card-block">Anim pariatur cliche reprehenderit,
-							enim eiusmod high life accusamus terry richardson ad squid. 3
-							wolf moon officia aute, non cupidatat skateboard dolor brunch.
-							Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-							tempor, sunt aliqua put a bird on it squid single-origin coffee
-							nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-							craft beer labore wes anderson cred nesciunt sapiente ea
-							proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
-							craft beer farm-to-table, raw denim aesthetic synth nesciunt you
-							probably haven't heard of them accusamus labore sustainable VHS.
+					<div class="panel-collapse collapse item-2" role="tabpanel">
+						<div class="panel-body">
+							<span>Item body.</span>
 						</div>
 					</div>
 				</div>
-				<div class="card">
-					<div class="card-header" role="tab" id="headingThree">
-						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse"
-								data-parent="#accordion" href="#collapseThree"
-								aria-expanded="false" aria-controls="collapseThree">
-								Har jeg fat i den lange ende? </a>
-						</h5>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab">
+						<h4 class="panel-title">
+							<a role="button" data-toggle="collapse"
+								data-parent="#accordion-1" aria-expanded="false"
+								href="#accordion-1 .item-3">Accordion Item</a>
+						</h4>
 					</div>
-					<div id="collapseThree" class="collapse" role="tabpanel"
-						aria-labelledby="headingThree">
-						<div class="card-block">Anim pariatur cliche reprehenderit,
-							enim eiusmod high life accusamus terry richardson ad squid. 3
-							wolf moon officia aute, non cupidatat skateboard dolor brunch.
-							Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-							tempor, sunt aliqua put a bird on it squid single-origin coffee
-							nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-							craft beer labore wes anderson cred nesciunt sapiente ea
-							proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
-							craft beer farm-to-table, raw denim aesthetic synth nesciunt you
-							probably haven't heard of them accusamus labore sustainable VHS.
+					<div class="panel-collapse collapse item-3" role="tabpanel">
+						<div class="panel-body">
+							<span>Item body.</span>
 						</div>
 					</div>
 				</div>
