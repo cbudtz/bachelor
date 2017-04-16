@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Agenda</title>
-<script src="js/jquery-3.2.0.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-</head>
-<body>
-	<div>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pensum</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -24,165 +24,204 @@
 				<div class="collapse navbar-collapse" id="navcol-1">
 					<p class="navbar-text">Videregående programmering</p>
 					<ul class="nav navbar-nav">
-						<li class="active" role="presentation"><a href="index.html">Agenda
-						</a></li>
+						<li role="presentation"><a href="index.html">Agenda</a></li>
 						<li role="presentation"><a href="questions.html">Forum </a></li>
-						<li role="presentation"><a href="#">Pensum </a></li>
-						<li role="presentation"><a href="#">Kursus oversigt</a></li>
+						<li class="active" role="presentation"><a href="pensum.html">Pensum </a></li>
+						<li role="presentation"><a href="kursusoversigt.html">Kursus Info</a></li>
 						<li role="presentation"><a href="administration.html">Administration
 						</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>Pensum </h1>
+                <h3>Efter emne</h3>
+                <div id="tree">
+                
+                
+                </div>
+                <h3>Efter Lektion</h3>
+                <div id="tree2">
+                	
+                </div>
+                <ul class="list-group"></ul>
+            </div>
+             <div class="col-md-9">
+                				<ul id="content" class="list-group">
+					<li class="list-group-item"><span> </span>
+						<h3 id="1">
+							<span class="glyphicon glyphicon-check" aria-hidden="true"></span>Læsestof
+						</h3>
+						<p>
+							Html på w3Schools: <a
+								href="https://www.w3schools.com/html/default.asp">Link</a>
+						</p></li>
+					<li class="list-group-item"><span> </span>
+						<h3 id="2">
+							<span class="glyphicon glyphicon-check" aria-hidden="true"></span>Opgave
+							- Kode
+						</h3>
+						<div class="well">
+							<span>Færdiggør koden så den udskriver Hello World </span>
+							<pre>
+								<code>
+									<textarea rows="5" cols="80">
+public static void main(String... args){ 
 
-		<div class="container">
-			<ul>
-				<li><span class="glyphicon glyphicon-calendar"></span><a
-					href="#">KursusKalender</a></li>
-				<li><span class="glyphicon glyphicon-question-sign"></span><a
-					href="#">Stil Spørgsmål</a></li>
-				<li>...???</li>
-
-
-			</ul>
-			<hr>
-			<table class="table table-bordered table-hover">
-				<thead>
-					<tr class="vdivide">
-						<th>Aktivitet</th>
-						<th>Dato</th>
-						<th>Forberedelse</th>
-						<th>Quiz</th>
-						<th>Øvelser</th>
-						<th>Stil spørgsmål
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><i class="glyphicon glyphicon-pencil"></i>Lektion 1</td>
-						<td><i class="glyphicon glyphicon-calendar"></i>1/9</td>
-						<td><i class="glyphicon glyphicon-pencil"></i><a href="Forberedelse.html">Link</a> <img
-							src="img/glyphicons-153-check.png"></td>
-						<td><i class="glyphicon glyphicon-pencil"></i><a href="#" onclick="$('#quizModal').modal('show')">Quiz</a><img
-							src="img/glyphicons-153-check.png"></td>
-						<td><i class="glyphicon glyphicon-pencil"></i><a
-							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><img
-							src="img/glyphicons-153-check.png"></td>
-						<td><img src="img/glyphicons-195-question-sign.png"></td>
-						<td><i class="glyphicon glyphicon-move"></i></td>
-					</tr>
-					<tr>
-						<td>Lektion 2</td>
-						<td>8/9</td>
-						<td><a href="Forberedelse.html">Link</a> <img
-							src="img/glyphicons-154-unchecked.png"></td>
-						<td><a href="#" onclick="$('#quizModal').modal('show')">Quiz</a><img
-							src="img/glyphicons-154-unchecked.png"></td>
-						<td><a
-							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><img
-							src="img/glyphicons-154-unchecked.png"></td>
-						<td><img src="img/glyphicons-195-question-sign.png"></td>
-						<td><i class="glyphicon glyphicon-move"></i></td>
-					</tr>
-					<tr>
-						<td>CDIO 1</td>
-						<td>14/9</td>
-						<td><a href="Forberedelse.html">Link</a> <img
-							src="img/glyphicons-154-unchecked.png"></td>
-						<td></td>
-						<td></td>
-						<td><img src="img/glyphicons-195-question-sign.png"></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="container">
-    <ul>
-        <li>Kursus kalender</li>
-        <li>....???</li>
-    </ul>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Aktivitet</th>
-                    <th>Dato</th>
-                    <th>Forberedelse</th>
-                    <th>Øvelser</th>
-                    <th>Spørgsmål</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cell 1</td>
-                    <td>Cell 2</td>
-                    <td>Cell 3</td>
-                    <td>Cell 3</td>
-                    <td>Cell 5</td>
-                    <td><i class="glyphicon glyphicon-move"></i></td>
-                </tr>
-                <tr>
-                    <td><i class="glyphicon glyphicon-pencil"></i>Cell 3</td>
-                    <td><i class="glyphicon glyphicon-calendar"></i>Cell 4</td>
-                    <td><i class="glyphicon glyphicon-pencil"></i>Cell 3</td>
-                    <td><i class="glyphicon glyphicon-pencil"></i>Cell 3</td>
-                    <td><i class="glyphicon glyphicon-pencil"></i>Cell 5</td>
-                    <td><i class="glyphicon glyphicon-move"></i></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><i class="glyphicon glyphicon-plus"></i></td>
-                </tr>
-            </tbody>
-        </table>
+ }
+                            
+     
+                            </textarea>
+                            </code>
+							</pre>
+						</div></li>
+					<li class="list-group-item">
+						<h3 id="3">
+							<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>Læsestof
+						</h3>
+						<div id="read3"></div> <iframe style=""
+							onload="resizeIframe(this);"
+							src="https://docs.google.com/document/d/1tzeIGr-dKEkDPdSmzqd61xFQpceBcuTi-SyZHMguuvA/pub"
+							width=100% height=800px> </iframe>
+					</li>
+					<li class="list-group-item"><span> </span>
+						<h3 id="4">
+							<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>Opgave
+							- Quiz
+						</h3>
+						<div class="well">
+							<p>Hvilket er et reserveret ord?</p>
+							<div class="radio">
+								<label> <input type="radio">public
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input type="radio">string
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input type="radio">name
+								</label>
+							</div>
+							<span> </span>
+							<nav>
+								<ul class="pagination">
+									<li><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+									<li class="active"><a>1</a></li>
+									<li><a>2</a></li>
+									<li><a>3</a></li>
+									<li><a>4</a></li>
+									<li><a>5</a></li>
+									<li><a aria-label="Next"><span aria-hidden="true">»</span></a></li>
+								</ul>
+							</nav>
+						</div></li>
+				</ul>   
+            </div>
+        </div>
     </div>
-</div>
-		
-		
-		<!-- QuizModal -->
-		<div id="quizModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap-treeview.js"></script>
+    <script type="text/javascript">
+    var tree1 = [{text: "Imperativ Programmering",
+	    nodes: [
+	      {
+	        text: "Værdier og atomare typer",
+	        nodes: [
+	          {
+	            text: "Mere om atomare typer"
+	          }
+	        ]}
+	      ,
+	      {
+  	        text: "Variable og Konstanter",
+  	      nodes: [
+	          {
+	            text: "Mere om atomare typer"
+	          }
+	        ]
+  	      }
+  	    
+	      ]
+    }, {
+    	 text: "Objekt Orienteret Programmering",
+    	 nodes: [
+   	      {
+   	        text: "Værdier og atomare typer",
+   	        nodes: [
+   	          {
+   	            text: "Mere om atomare typer"
+   	          }
+   	        ]}
+   	      ,
+   	      {
+     	        text: "Variable og Konstanter",
+     	      nodes: [
+   	          {
+   	            text: "Mere om atomare typer"
+   	          }
+   	        ]
+     	      }
+     	    
+   	      ]
+    }
+    
+    ];
 
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Quiz</h4>
-					</div>
-					<div class="modal-body">
-						<h2>Hvad står HTML for</h2>
-						<form>
-							<div class="radio">
-								<label><input type="radio" name="quiz" id="1" value="1">
-									Home Tool Markup Language</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="quiz" id="2" value="2">
-									Hyperlinks and Text Markup Language</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="quiz" id="3" value="3">
-									Hyper Text Markup Language</label>
-							</div>
-							<br> <input type="submit"
-								class="w3-btn w3-orange w3-large w3-text-white" value=" Next ">
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-
-	</div>
+    var tree2 = [{text: "Lektion 1",
+	    nodes: [
+		      {
+		        text: "Værdier og atomare typer",
+		        nodes: [
+		          {
+		            text: "Mere om atomare typer"
+		          }
+		        ]}
+		      ,
+		      {
+	  	        text: "Variable og Konstanter",
+	  	      nodes: [
+		          {
+		            text: "Mere om atomare typer"
+		          }
+		        ]
+	  	      }
+	  	    
+		      ]
+	    }, {
+	    	 text: "Lektion 2",
+	    	 nodes: [
+	   	      {
+	   	        text: "Værdier og atomare typer",
+	   	        nodes: [
+	   	          {
+	   	            text: "Mere om atomare typer"
+	   	          }
+	   	        ]}
+	   	      ,
+	   	      {
+	     	        text: "Variable og Konstanter",
+	     	      nodes: [
+	   	          {
+	   	            text: "Mere om atomare typer"
+	   	          }
+	   	        ]
+	     	      }
+	     	    
+	   	      ]
+	    }
+	    
+	    ];
+    $(document).ready(function(){
+    $('#tree').treeview({data: tree1});
+    $('#tree2').treeview({data: tree2});
+    });
+    </script>
+    
 </body>
+
 </html>

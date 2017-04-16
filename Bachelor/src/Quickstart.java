@@ -8,8 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
-import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.extensions.java6.auth.oauth2.VerificationCodeReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -17,15 +16,24 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.services.drive.Drive;
+import com.google.api.services.drive.model.File;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.Sheets.Spreadsheets.Create;
+import com.google.api.services.sheets.v4.Sheets.Spreadsheets.Values.BatchUpdate;
 import com.google.api.services.sheets.v4.SheetsScopes;
-import com.google.api.services.sheets.v4.model.CellData;
-import com.google.api.services.sheets.v4.model.GridData;
-import com.google.api.services.sheets.v4.model.RowData;
-import com.google.api.services.sheets.v4.model.Sheet;
+import com.google.api.services.sheets.v4.model.BatchUpdateSpreadsheetRequest;
+import com.google.api.services.sheets.v4.model.BatchUpdateSpreadsheetResponse;
+import com.google.api.services.sheets.v4.model.BatchUpdateValuesRequest;
+import com.google.api.services.sheets.v4.model.BatchUpdateValuesResponse;
+import com.google.api.services.sheets.v4.model.Request;
 import com.google.api.services.sheets.v4.model.Spreadsheet;
+import com.google.api.services.sheets.v4.model.SpreadsheetProperties;
+import com.google.api.services.sheets.v4.model.UpdateSpreadsheetPropertiesRequest;
 import com.google.api.services.sheets.v4.model.ValueRange;
+
+import google.api.GoogleAuthApp;
+import google.api.GoogleVerificationCodeReceiver;
 
 public class Quickstart {
 	/** Application name. */
@@ -52,9 +60,7 @@ public class Quickstart {
 	 * at ~/.credentials/sheets.googleapis.com-java-quickstart
 	 */
 	private static final List<String> SCOPES =
-			//Arrays.asList(SheetsScopes.SPREADSHEETS);
-			null;
-//			Arrays.asList(SheetsScopes.SPREADSHEETS_READONLY);
+			Arrays.asList(SheetsScopes.SPREADSHEETS, SheetsScopes.DRIVE);
 
 	static {
 		try {
@@ -75,7 +81,7 @@ public class Quickstart {
 		// Load client secrets.
 		System.out.println(JSON_FACTORY);
 		InputStream in =
-				Quickstart.class.getResourceAsStream("/client_secret.json");
+				Quickstart.class.getResourceAsStream("/client_secret_ec2.json");
 		System.out.println(in);
 		GoogleClientSecrets clientSecrets =
 				GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
@@ -87,8 +93,12 @@ public class Quickstart {
 				.setDataStoreFactory(DATA_STORE_FACTORY)
 				.setAccessType("offline")
 				.build();
-		Credential credential = new AuthorizationCodeInstalledApp(
-				flow, new LocalServerReceiver()).authorize("user");
+		VerificationCodeReceiver receiver = new GoogleVerificationCodeReceiver("localhost", 5151);
+		
+		GoogleAuthApp authApp = new GoogleAuthApp(
+				flow, receiver);
+		authApp.setListener(new UrlListener());
+		Credential credential = authApp.authorize("user");
 		System.out.println(
 				"Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
 		return credential;
@@ -100,36 +110,98 @@ public class Quickstart {
 	 * @throws IOException
 	 */
 	public static Sheets getSheetsService() throws IOException {
+//		GoogleCredential credential = GoogleCredential.fromStream(new FileInputStream("client_secret.json"))
+//			    .createScoped(Collections.singleton(SheetsScopes.SPREADSHEETS_READONLY));
 		Credential credential = authorize();
 		return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
 				.setApplicationName(APPLICATION_NAME)
 				.build();
 	}
+	
+	private static Drive getDriveService() throws IOException {
+		Credential credential = authorize();
+		Drive drive = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
+		return drive;
+	}
+	
 
 	public static void main(String[] args) throws IOException {
 		// Build a new authorized API client service.
+		
 		Sheets service = getSheetsService();
-//		Spreadsheet content = new Spreadsheet();
-//		List<Sheet> Sheets = content.getSheets();
-//		for (Sheet sheet : Sheets) {
-//			List<GridData> gridDatas = sheet.getData();
-//			for (GridData gridData : gridDatas) {
-//				List<RowData> rows = gridData.getRowData();
-//				for (RowData rowData : rows) {
-//					List<CellData> values = rowData.getValues();
-//					for (CellData cellData : values) {
-//						System.out.println(cellData.toPrettyString());
-//					}
-//				}
-//			}
-//
-//		}
-//		Create newSpreadSheetRequest = service.spreadsheets().create(content);
-//		Spreadsheet response1 = newSpreadSheetRequest.execute();
-//		System.out.println(response1.getSpreadsheetId());
-
+		Drive drive = getDriveService();
 		// Prints the names and majors of students in a sample spreadsheet:
 		// https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+		Spreadsheet newSheet = createSheet(service);
+		newSheet.getProperties().setTitle("F1702324");
+		Request TitleupdateReq = createTitleRequest("Test");
+
+		
+		List<Request> reqList = new ArrayList<>();
+		reqList.add(TitleupdateReq);
+		
+		BatchUpdateSpreadsheetRequest batchUpdateSpreadsheetRequest = new BatchUpdateSpreadsheetRequest();
+		batchUpdateSpreadsheetRequest.setRequests(reqList);
+		batchUpdateSpreadsheetRequest.setIncludeSpreadsheetInResponse(true);
+		 BatchUpdateSpreadsheetResponse response = service.spreadsheets().batchUpdate(newSheet.getSpreadsheetId(), batchUpdateSpreadsheetRequest).execute();
+		
+		Spreadsheet sheet = response.getUpdatedSpreadsheet();
+		List<List<Object>> values = new ArrayList<>();
+		List<Object> inner = new ArrayList<>();
+		inner.add("Test1");
+		inner.add("Test2");
+		values.add(inner);
+		System.out.println(sheet.toPrettyString());
+		
+		BatchUpdateValuesRequest batchUpdateValuesRequest = createCellUpdateRequest("A1:B1", values);
+		BatchUpdate batchUpdate = service.spreadsheets().values().batchUpdate(newSheet.getSpreadsheetId(), batchUpdateValuesRequest);
+		batchUpdateValuesRequest.setIncludeValuesInResponse(true);
+		BatchUpdateValuesResponse batchResponse = batchUpdate.execute();
+		System.out.println(batchResponse.getResponses().get(0).getUpdatedData().toPrettyString());
+		
+		drive.files().update(newSheet.getSpreadsheetId(), null ).setAddParents("0B9dp65nRHm0raVVoWWRRa1dlVmc")
+		.setFields("*")
+		.execute();
+//		getTestSheet(service);
+	
+	}
+	
+
+
+	private static BatchUpdateValuesRequest createCellUpdateRequest(String range, List<List<Object>> values) {
+		BatchUpdateValuesRequest req = new BatchUpdateValuesRequest();
+		req.setValueInputOption("RAW");
+		List<ValueRange> data = new ArrayList<>();
+		data.add(new ValueRange().setRange(range).setValues(values));
+		req.setData(data );
+		return req;
+	}
+
+	private static Request createTitleRequest(String title){
+		Request TitleupdateReq = new Request();
+		UpdateSpreadsheetPropertiesRequest updateSpreadsheetProperties = new UpdateSpreadsheetPropertiesRequest();
+		updateSpreadsheetProperties.setFields("*");
+		updateSpreadsheetProperties.setProperties(new SpreadsheetProperties().setTitle("Test"));
+		TitleupdateReq.setUpdateSpreadsheetProperties(updateSpreadsheetProperties );
+		
+		return TitleupdateReq;
+	}
+
+	private static Spreadsheet createSheet(Sheets service) {
+		try {
+			Create create = service.spreadsheets().create(new Spreadsheet());
+			Spreadsheet newSheet = create.execute();
+			System.out.println(newSheet.getSpreadsheetId());
+			return newSheet;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
+	private static void getTestSheet(Sheets service) throws IOException {
 		String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
 		String range = "Class Data!A2:E";
 		ValueRange response = service.spreadsheets().values()
