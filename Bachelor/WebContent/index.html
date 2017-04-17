@@ -6,6 +6,7 @@
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
 	<div>
@@ -77,35 +78,58 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr class="success">
 						<td>Lektion 1</td>
 						<td>1/9</td>
-						<td><a href="Forberedelse.html">Link</a> <img
-							src="img/glyphicons-153-check.png"></td>
-						<td><a href="#" onclick="$('#quizModal').modal('show')">Slides+Quiz</a><img
-							src="img/glyphicons-153-check.png"></td>
-						<td><a
-							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><img
-							src="img/glyphicons-153-check.png"></td>
+						<td><div class="col-md-6">
+								<a href="Forberedelse.html">Link</a> <input id="test1" type="checkbox" checked="checked"/><label for="test1"> </label>
+							</div>
+							<div class="col-md-6"><div class="progress">
+								<div class="progress-bar progress-bar-success" aria-valuenow="100" aria-valuemin="0"
+									aria-valuemax="100" style="width: 100%;">100%</div>
+							</div>
+							</div></td>
+						<td><div class="col-md-6"><a href="#" onclick="$('#quizModal').modal('show')">Slides+Quiz</a><input id="test2" type="checkbox" checked="checked"/><label for="test2"></label></div><div class="col-md-6"><div class="progress"><div class="progress-bar progress-bar-success" aria-valuenow="100" aria-valuemin="0"
+									aria-valuemax="100" style="width: 100%;">100%</div></div></div></td>
+						<td><div class="col-md-6">
+							<a
+							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><input id="test3" type="checkbox" checked="checked"/><label for="test3"></label></div><div class="col-md-6"><div class="progress"><div class="progress-bar progress-bar-success" aria-valuenow="100" aria-valuemin="0"
+									aria-valuemax="100" style="width: 100%;">100%</div></div></div></td>
 						<td><img src="img/glyphicons-195-question-sign.png"></td>
 					</tr>
-					<tr>
+					<tr class="info">
 						<td>Lektion 2</td>
 						<td>8/9</td>
-						<td><a href="Forberedelse.html">Link</a> <img
-							src="img/glyphicons-154-unchecked.png"></td>
-						<td><a href="#" onclick="$('#quizModal').modal('show')">Slides+Quiz</a><img
-							src="img/glyphicons-154-unchecked.png"></td>
-						<td><a
-							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><img
-							src="img/glyphicons-154-unchecked.png"></td>
+						<td><div class="col-md-6"><a href="Forberedelse.html">Link</a> <input id="test4" type="checkbox" /><label for="test4"></label></div>
+						<div class="col-md-6"><div class="progress">
+								<div class="progress-bar" aria-valuenow="100" aria-valuemin="0"
+									aria-valuemax="100" style="width: 50%;">50%</div>
+							</div></div></td>
+						<td>
+						<div class="col-md-6">
+						<a href="#" onclick="$('#quizModal').modal('show')">Slides+Quiz</a><input id="test5" type="checkbox"/><label for="test5"></label>
+						</div>
+						<div class="col-md-6"><div class="progress">
+								<div class="progress-bar" aria-valuenow="0" aria-valuemin="0"
+									aria-valuemax="100" style="width: 0%;">0%</div>
+							</div></div>
+						</td>
+						<td>
+						<div class="col-md-6">
+						<a
+							href="https://docs.google.com/document/d/1a7O4-yxQiQlEwq8SxVKjzqKN_FqOunnS7-_yQ_ETWY0/pub">Øvelser</a><input id="test6" type="checkbox"/><label for="test6"></label>
+						</div>
+						<div class="col-md-6"><div class="progress">
+								<div class="progress-bar" aria-valuenow="0" aria-valuemin="0"
+									aria-valuemax="100" style="width: 0%;">0%</div>
+							</div></div>
+						</td>
 						<td><img src="img/glyphicons-195-question-sign.png"></td>
 					</tr>
 					<tr>
 						<td>CDIO 1</td>
 						<td>14/9</td>
-						<td><a href="Forberedelse.html">Link</a> <img
-							src="img/glyphicons-154-unchecked.png"></td>
+						<td><a href="Forberedelse.html">Link</a> <input id="test7" type="checkbox"/><label for="test7"></label></td>
 						<td></td>
 						<td></td>
 						<td><img src="img/glyphicons-195-question-sign.png"></td>
