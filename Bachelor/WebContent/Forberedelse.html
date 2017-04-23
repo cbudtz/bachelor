@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Forberedelse</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/app.css">
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
@@ -38,14 +39,10 @@
 						<!-- LeftMenu -->
 						<div class="panel-body">
 							<ol id="sortable">
-								<li><span class="glyphicon glyphicon-check"
-									aria-hidden="true"></span><a href="#1">Læsestof</a></li>
-								<li><span class="glyphicon glyphicon-check"
-									aria-hidden="true"></span><a href="#2">Opgave - Kode</a></li>
-								<li><span class="glyphicon glyphicon-unchecked"
-									aria-hidden="true"></span><a href="#3">Læsestof </a></li>
-								<li><span class="glyphicon glyphicon-unchecked"
-									aria-hidden="true"></span><a href="#4">Opgave - Quiz </a></li>
+								<li><input id="test1" type="checkbox" checked="checked"/><label for="test1"> </label><a href="#1">Læsestof</a></li>
+								<li><input id="test1" type="checkbox" checked="checked"/><label for="test1"> </label></span><a href="#2">Opgave - Kode</a></li>
+								<li><input id="test1" type="checkbox" /><label for="test1"> </label></span><a href="#3">Læsestof </a></li>
+								<li><input id="test1" type="checkbox" /><label for="test1"> </label><a href="#4">Opgave - Quiz </a></li>
 							</ol>
 							<div class="progress">
 								<div class="progress-bar" aria-valuenow="50" aria-valuemin="0"
@@ -59,7 +56,7 @@
 				<ul id="content" class="list-group">
 					<li class="list-group-item"><span> </span>
 						<h3 id="1">
-							<span class="glyphicon glyphicon-check" aria-hidden="true"></span>Læsestof
+							<input id="test1" type="checkbox" checked="checked"/><label for="test1"> </label>Læsestof
 						</h3>
 						<p>
 							<b>Læs om html på w3Schools: <a
@@ -67,7 +64,7 @@
 						</p></li>
 					<li class="list-group-item"><span> </span>
 						<h3 id="2">
-							<span class="glyphicon glyphicon-check" aria-hidden="true"></span>Opgave
+							<input id="test1" type="checkbox" checked="checked"/><label for="test1"> </label>Opgave
 							- Kode
 						</h3>
 						<div class="well">
@@ -95,7 +92,7 @@ public static void main(String... args){
 						</div></li>
 					<li class="list-group-item">
 						<h3 id="3">
-							<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>Læsestof
+							<input id="test1" type="checkbox"/><label for="test1"> </label>Læsestof
 						</h3>
 						<div id="read3"></div> <iframe style=""
 							onload="resizeIframe(this);"
@@ -104,7 +101,7 @@ public static void main(String... args){
 					</li>
 					<li class="list-group-item"><span> </span>
 						<h3 id="4">
-							<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>Opgave
+							<input id="test1" type="checkbox" /><label for="test1"> </label>Opgave
 							- Quiz
 						</h3>
 						<div class="well">
