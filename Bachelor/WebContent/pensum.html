@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pensum</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 
 <body>
@@ -38,7 +39,7 @@
         <div class="row">
             <div class="col-md-3">
                 <h1>Pensum </h1>
-                <h3>Efter emne</h3>
+                <h3>Efter emne <span class="glyphicon glyphicon-download-alt"></span></h3>
                 <div id="tree">
                 
                 
@@ -53,7 +54,7 @@
                 				<ul id="content" class="list-group">
 					<li class="list-group-item"><span> </span>
 						<h3 id="1">
-							<span class="glyphicon glyphicon-check" aria-hidden="true"></span>Læsestof
+							<input id="test1" type="checkbox" checked="checked"/><label for="test1"> </label>Læsestof
 						</h3>
 						<p>
 							Html på w3Schools: <a
@@ -127,7 +128,7 @@ public static void main(String... args){
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap-treeview.js"></script>
     <script type="text/javascript">
-    var tree1 = [{text: "Imperativ Programmering",
+    var tree1 = [{text: "Imperativ Programmering ",
 	    nodes: [
 	      {
 	        text: "Værdier og atomare typer",
